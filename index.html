@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying2022 | 探索宇宙</title>
+    <style>
+        /* 重置与基础设置 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 动态流光渐变背景 */
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e, #0f0c29);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 玻璃拟态卡片设计 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 90%;
+            transform: translateY(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); }
+
+        h1 { font-size: 2.8em; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 0 0 15px rgba(255,255,255,0.5); }
+        .subtitle { font-size: 1.1em; color: #b3b3b3; margin-bottom: 35px; min-height: 1.5em; letter-spacing: 1px;}
+        
+        /* 霓虹灯按钮组 */
+        .links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .btn {
+            text-decoration: none; padding: 12px 30px; border-radius: 30px; font-weight: bold; text-transform: uppercase;
+            letter-spacing: 2px; transition: 0.4s; position: relative; overflow: hidden; z-index: 1;
+        }
+        /* TG 按钮发光效果 */
+        .btn-tg { color: #00d2ff; border: 2px solid #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.2); inset 0 0 10px rgba(0, 210, 255, 0.1); }
+        .btn-tg:hover { background: #00d2ff; color: #000; box-shadow: 0 0 20px #00d2ff, 0 0 40px #00d2ff; }
+        /* 邮箱 按钮发光效果 */
+        .btn-email { color: #ff007f; border: 2px solid #ff007f; box-shadow: 0 0 10px rgba(255, 0, 127, 0.2); inset 0 0 10px rgba(255, 0, 127, 0.1); }
+        .btn-email:hover { background: #ff007f; color: #fff; box-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f; }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <h1>Flying2022</h1>
+        <!-- 打字机特效容器 -->
+        <div class="subtitle" id="typewriter"></div>
+        
+        <div class="links">
+            <!-- 【注意】在这里修改你的 TG 和 邮箱地址！ -->
+            <a href=" " class="btn btn-tg" target="_blank">Telegram</a >
+            <a href="mailto:你的邮箱@example.com" class="btn btn-email">Email</a >
+        </div>
+    </div>
+
+    <!-- 打字机 JS 脚本 -->
+    <script>
+        const text = "Hello World! 欢迎来到我的数字据点 🚀";
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 120); // 打字速度，数字越小越快
+            }
+        }
+        window.onload = typeWriter;
+    </script>
+</body>
+</html>
